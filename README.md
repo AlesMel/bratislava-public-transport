@@ -36,6 +36,14 @@ npm run preview
 - **Configurable** — radius, polling interval, center point, all persisted in localStorage
 - **Graceful error handling** — exponential backoff on fetch errors
 
+## Screenshots
+
+The app ships with three example frames stored in `docs/screenshots/`.
+
+- ![3D map with active vehicles](docs/screenshots/map-vehicles.svg)
+- ![Selected line with full route path](docs/screenshots/line-route-path.svg)
+- ![Stops overlay and selected vehicle details](docs/screenshots/stops-and-vehicle-details.svg)
+
 ## CORS & Proxy
 
 The app fetches directly from `https://mapa.idsbk.sk/navigation/vehicles/nearby`.
