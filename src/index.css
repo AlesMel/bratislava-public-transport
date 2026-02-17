@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Global light styling ───────────────────────────────── */
+
+:root {
+  --bg-start: #f8fafc;
+  --bg-mid: #f1f5f9;
+  --bg-end: #e2e8f0;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-mid), var(--bg-end));
+  min-height: 100vh;
+  color: #1e293b;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ── Cozy mode overrides (applied via class on body) ───── */
+
+body.cozy-mode {
+  --bg-start: #fefce8;
+  --bg-mid: #fef9c3;
+  --bg-end: #fef3c7;
+}
+
+body.cozy-mode * {
+  transition-duration: 0.8s !important;
+}
+
+/* ── Leaflet overrides ─────────────────────────────────── */
+
+.leaflet-container {
+  border-radius: 1rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 1rem !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: #1e293b !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.96) !important;
+}
+
+.leaflet-popup-close-button {
+  color: #64748b !important;
+}
+
+/* ── Vehicle marker pulse animation ────────────────────── */
+
+@keyframes marker-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(228, 164, 78, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(228, 164, 78, 0);
+  }
+}
+
+/* -- Icon-based vehicle markers -------------------------------- */
+
+.vehicle-icon-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: marker-pulse 2.5s ease-in-out infinite;
+  transition: transform 0.6s ease, left 0.6s ease, top 0.6s ease;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+.vehicle-icon-wrap svg {
+  width: 100%;
+  height: 100%;
+}
+
+.vehicle-icon-wrap.vehicle-selected {
+  transform: scale(1.14);
+  filter: drop-shadow(0 0 0.35rem rgba(59, 130, 246, 0.55))
+          drop-shadow(0 0 0.65rem rgba(59, 130, 246, 0.35));
+}
+
+.vehicle-label {
+  margin-top: -2px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  padding: 1px 4px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Cozy mode: slower pulse */
+body.cozy-mode .vehicle-icon-wrap {
+  animation-duration: 4s;
+}
+
+/* ── Glass card utility ────────────────────────────────── */
+
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Scrollbar styling ─────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
+}
+
+/* ── MapLibre 3D mode overrides ────────────────────────── */
+
+.maplibregl-map {
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Popup styling for 3D map */
+.cozy-popup-3d .maplibregl-popup-content {
+  border-radius: 1rem !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: #1e293b !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  padding: 12px 14px;
+  min-width: 200px;
+}
+
+.cozy-popup-3d .maplibregl-popup-tip {
+  border-top-color: rgba(255, 255, 255, 0.96) !important;
+}
+
+.cozy-popup-3d .maplibregl-popup-close-button {
+  color: #64748b !important;
+  font-size: 18px;
+  padding: 2px 8px;
+}
+
+.vehicle-popup-3d {
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+.stop-marker-3d {
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background: #3b82f6;
+  border: 1.5px solid #bfdbfe;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  cursor: pointer;
+}
+
+.trip-stop-marker-3d {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3), 0 2px 4px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+@keyframes trip-route-dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -44;
+  }
+}
+
+.trip-route-flow {
+  animation: trip-route-dash 1.6s linear infinite;
+}
