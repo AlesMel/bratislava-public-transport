@@ -38,11 +38,10 @@ npm run preview
 
 ## Screenshots
 
-The app ships with three example frames stored in `docs/screenshots/`.
+Add app screenshots to `docs/screenshots/` with these names to have them rendered here:
 
-- ![3D map with active vehicles](docs/screenshots/map-vehicles.svg)
-- ![Selected line with full route path](docs/screenshots/line-route-path.svg)
-- ![Stops overlay and selected vehicle details](docs/screenshots/stops-and-vehicle-details.svg)
+![3D map with active vehicles](docs/screenshots/3d_map.png)
+![Selected line with full route path](docs/screenshots/stops-and-vehicle-details.png)
 
 ## CORS & Proxy
 
